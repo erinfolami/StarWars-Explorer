@@ -64,6 +64,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
 
     // Hilt DI
     implementation(libs.hilt.android)
@@ -75,6 +77,10 @@ dependencies {
     implementation(libs.composeUiToolingPreview)
     implementation(libs.composeActivity)
     debugImplementation(libs.composeUiTooling)
+
+    // Navigation
+    implementation(libs.navigation.compose)
+
 
 
     testImplementation(libs.junit)

@@ -1,4 +1,25 @@
 package com.example.starwarsexplorer.di
 
-class RepositoryModule {
+import com.example.starwarsexplorer.data.mapper.StarWarsMapper
+import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
+import com.example.starwarsexplorer.data.remote.repository.StarWarsRepositoryImpl
+import com.example.starwarsexplorer.domain.repository.StarWarsRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
+
+    @Provides
+    @Singleton
+    fun provideStarWarsRepository(
+        apiService: StarWarsApiService,
+        mapper: StarWarsMapper
+    ): StarWarsRepository {
+        return StarWarsRepositoryImpl(apiService, mapper)
+    }
 }
