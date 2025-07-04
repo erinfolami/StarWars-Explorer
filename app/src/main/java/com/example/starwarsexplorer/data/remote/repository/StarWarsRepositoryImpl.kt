@@ -6,26 +6,53 @@ import com.example.starwarsexplorer.domain.model.Film
 import com.example.starwarsexplorer.domain.model.Starship
 import com.example.starwarsexplorer.domain.model.Vehicle
 import com.example.starwarsexplorer.domain.repository.StarWarsRepository
-import javax.inject.Inject
+import com.example.starwarsexplorer.domain.util.Resource
 
-class StarWarsRepositoryImpl @Inject constructor(
-    private val api: StarWarsApiService,
+
+class StarWarsRepositoryImpl(
+    private val apiService: StarWarsApiService,
     private val mapper: StarWarsMapper
 ) : StarWarsRepository {
 
-    override suspend fun getStarships(): List<Starship> {
-        val response = api.getStarships()
-        return response.body()?.map { mapper.mapStarship(it) } ?: emptyList()
+    override suspend fun getStarships(): Resource<List<Starship>> {
+        return try {
+            val response = apiService.getStarships()
+            if (response.isSuccessful) {
+                val domainList = response.body()?.map { mapper.mapStarship(it) } ?: emptyList()
+                Resource.Success(domainList)
+            } else {
+                Resource.Error("Error: ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Resource.Error("Exception: ${e.localizedMessage}", e)
+        }
     }
 
-    override suspend fun getFilms(): List<Film> {
-        val response = api.getFilms()
-        return response.body()?.map { mapper.mapFilm(it) } ?: emptyList()
+    override suspend fun getFilms(): Resource<List<Film>> {
+        return try {
+            val response = apiService.getFilms()
+            if (response.isSuccessful) {
+                val domainList = response.body()?.map { mapper.mapFilm(it) } ?: emptyList()
+                Resource.Success(domainList)
+            } else {
+                Resource.Error("Error: ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Resource.Error("Exception: ${e.localizedMessage}", e)
+        }
     }
 
-    override suspend fun getVehicles(): List<Vehicle> {
-        val response = api.getVehicles()
-        return response.body()?.map { mapper.mapVehicle(it) } ?: emptyList()
+    override suspend fun getVehicles(): Resource<List<Vehicle>> {
+        return try {
+            val response = apiService.getVehicles()
+            if (response.isSuccessful) {
+                val domainList =  response.body()?.map { mapper.mapVehicle(it) } ?: emptyList()
+                Resource.Success(domainList)
+            } else {
+                Resource.Error("Error: ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Resource.Error("Exception: ${e.localizedMessage}", e)
+        }
     }
 }
-

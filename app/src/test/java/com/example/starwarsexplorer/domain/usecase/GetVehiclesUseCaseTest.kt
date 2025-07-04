@@ -2,11 +2,13 @@ package com.example.starwarsexplorer.domain.usecase
 
 import com.example.starwarsexplorer.domain.model.Vehicle
 import com.example.starwarsexplorer.domain.repository.StarWarsRepository
+import com.example.starwarsexplorer.domain.util.Resource
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -37,13 +39,15 @@ class GetVehiclesUseCaseTest {
                 cargoCapacity = "50000"
             )
         )
-        coEvery { repository.getVehicles() } returns vehicles
+        coEvery { repository.getVehicles() } returns Resource.Success(vehicles)
 
         // When
         val result = useCase()
 
         // Then
-        assertEquals(vehicles, result)
+        assertTrue(result is Resource.Success)
+        val data = (result as Resource.Success).data
+        assertEquals(vehicles, data)
         coVerify(exactly = 1) { repository.getVehicles() }
     }
 }
