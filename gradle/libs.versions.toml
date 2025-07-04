@@ -19,6 +19,8 @@ compose = "1.8.3"
 composeCompiler = "1.5.15"
 activityCompose = "1.10.1"
 navigation = "2.7.7"
+mockk = "1.13.10"
+coroutines = "1.7.3"
 
 
 [libraries]
@@ -63,6 +65,8 @@ composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref =
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 
 
 [plugins]

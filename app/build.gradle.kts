@@ -81,7 +81,11 @@ dependencies {
     // Navigation
     implementation(libs.navigation.compose)
 
+    // MockK
+    testImplementation(libs.mockk)
 
+    // Coroutines
+    testImplementation(libs.coroutines.test)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
