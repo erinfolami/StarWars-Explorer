@@ -65,8 +65,15 @@ composeCompiler = { module = "androidx.compose.compiler:compiler", version.ref =
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 composeActivity = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+
+# Libraries for MockK
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+# Libraries for coroutines
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+
+# Libraries for mockwebserver
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
 
 
 [plugins]

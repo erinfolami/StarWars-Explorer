@@ -87,6 +87,9 @@ dependencies {
     // Coroutines
     testImplementation(libs.coroutines.test)
 
+    // Mock webserver
+    testImplementation(libs.mockwebserver)
+
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
