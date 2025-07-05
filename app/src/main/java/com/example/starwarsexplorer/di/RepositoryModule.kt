@@ -1,6 +1,6 @@
 package com.example.starwarsexplorer.di
 
-import com.example.starwarsexplorer.data.mapper.StarWarsMapper
+import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
 import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
 import com.example.starwarsexplorer.data.remote.repository.StarWarsRepositoryImpl
 import com.example.starwarsexplorer.domain.repository.StarWarsRepository
@@ -18,7 +18,7 @@ object RepositoryModule {
     @Singleton
     fun provideStarWarsRepository(
         apiService: StarWarsApiService,
-        mapper: StarWarsMapper
+        mapper: RemoteMapper
     ): StarWarsRepository {
         return StarWarsRepositoryImpl(apiService, mapper)
     }

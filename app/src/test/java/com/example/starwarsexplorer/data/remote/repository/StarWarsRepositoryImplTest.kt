@@ -1,14 +1,11 @@
 package com.example.starwarsexplorer.data.remote.repository
 
 
-import com.example.starwarsexplorer.data.mapper.StarWarsMapper
+import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
 import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
 import com.example.starwarsexplorer.data.remote.model.FilmDto
 import com.example.starwarsexplorer.data.remote.model.StarshipDto
 import com.example.starwarsexplorer.data.remote.model.VehicleDto
-import com.example.starwarsexplorer.domain.model.Film
-import com.example.starwarsexplorer.domain.model.Starship
-import com.example.starwarsexplorer.domain.model.Vehicle
 import com.example.starwarsexplorer.domain.util.Resource
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -25,7 +22,7 @@ import retrofit2.Response
 class StarWarsRepositoryImplTest {
 
     private val apiService: StarWarsApiService = mockk()
-    private val mapper = StarWarsMapper()
+    private val mapper = RemoteMapper()
     private lateinit var repository: StarWarsRepositoryImpl
 
     @Before

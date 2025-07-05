@@ -1,6 +1,7 @@
 package com.example.starwarsexplorer.data.mapper
 
 
+import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
 import com.example.starwarsexplorer.data.remote.model.FilmDto
 import com.example.starwarsexplorer.data.remote.model.StarshipDto
 import com.example.starwarsexplorer.data.remote.model.VehicleDto
@@ -12,7 +13,7 @@ import org.junit.Test
 
 class StarWarsMapperTest {
 
-    private val mapper = StarWarsMapper()
+    private val mapper = RemoteMapper()
 
     @Test
     fun `mapStarship should map correctly`() {
