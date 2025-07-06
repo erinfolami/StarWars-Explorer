@@ -1,12 +1,12 @@
-package com.example.starwarsexplorer.data.dao
+package com.example.starwarsexplorer.data.local.dao
+
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.starwarsexplorer.data.local.dao.StarshipDao
 import com.example.starwarsexplorer.data.local.database.AppDatabase
-import com.example.starwarsexplorer.data.local.entities.StarshipEntity
+import com.example.starwarsexplorer.data.local.entities.FilmEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -15,10 +15,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class StarshipDaoTest {
+class FilmDaoTest {
 
     private lateinit var database: AppDatabase
-    private lateinit var dao: StarshipDao
+    private lateinit var dao: FilmDao
 
     @Before
     fun setup() {
@@ -28,7 +28,7 @@ class StarshipDaoTest {
             AppDatabase::class.java
         ).allowMainThreadQueries().build()
 
-        dao = database.starshipDao()
+        dao = database.filmDao()
     }
 
     @After
@@ -37,24 +37,22 @@ class StarshipDaoTest {
     }
 
     @Test
-    fun insertStarships_and_getAllStarships_returnsInsertedData() = runBlocking {
-        val starships = listOf(
-            StarshipEntity(
-                name = "X-Wing",
-                model = "T-65B",
-                manufacturer = "Incom Corporation",
-                costInCredits = "149999",
-                length = "12.5",
-                crew = "1",
-                passengers = "0",
-                cargoCapacity = "110"
+    fun insertFilms_and_getAllFilms_returnsInsertedData() = runBlocking {
+        val films = listOf(
+            FilmEntity(
+                title = "A New Hope",
+                episodeId = 4,
+                director = "George Lucas",
+                producer = "Gary Kurtz, Rick McCallum",
+                releaseDate = "1977-05-25",
+                openingCrawl = "It is a period of civil war..."
             )
         )
 
-        dao.insertStarships(starships)
-        val result = dao.getAllStarships()
+        dao.insertFilms(films)
+        val result = dao.getAllFilms()
 
         Assert.assertEquals(1, result.size)
-        Assert.assertEquals("X-Wing", result[0].name)
+        Assert.assertEquals("A New Hope", result[0].title)
     }
 }

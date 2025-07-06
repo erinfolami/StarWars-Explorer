@@ -1,13 +1,11 @@
-package com.example.starwarsexplorer.data.dao
-
+package com.example.starwarsexplorer.data.local.dao
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.starwarsexplorer.data.local.dao.VehicleDao
 import com.example.starwarsexplorer.data.local.database.AppDatabase
-import com.example.starwarsexplorer.data.local.entities.VehicleEntity
+import com.example.starwarsexplorer.data.local.entities.StarshipEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -16,10 +14,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class VehicleDaoTest {
+class StarshipDaoTest {
 
     private lateinit var database: AppDatabase
-    private lateinit var dao: VehicleDao
+    private lateinit var dao: StarshipDao
 
     @Before
     fun setup() {
@@ -29,7 +27,7 @@ class VehicleDaoTest {
             AppDatabase::class.java
         ).allowMainThreadQueries().build()
 
-        dao = database.vehicleDao()
+        dao = database.starshipDao()
     }
 
     @After
@@ -38,24 +36,24 @@ class VehicleDaoTest {
     }
 
     @Test
-    fun insertVehicles_and_getAllVehicles_returnsInsertedData() = runBlocking {
-        val vehicles = listOf(
-            VehicleEntity(
-                name = "Speeder Bike",
-                model = "74-Z",
-                manufacturer = "Aratech Repulsor Company",
-                costInCredits = "8000",
-                length = "3",
+    fun insertStarships_and_getAllStarships_returnsInsertedData() = runBlocking {
+        val starships = listOf(
+            StarshipEntity(
+                name = "X-Wing",
+                model = "T-65B",
+                manufacturer = "Incom Corporation",
+                costInCredits = "149999",
+                length = "12.5",
                 crew = "1",
                 passengers = "0",
-                cargoCapacity = "4"
+                cargoCapacity = "110"
             )
         )
 
-        dao.insertVehicles(vehicles)
-        val result = dao.getAllVehicles()
+        dao.insertStarships(starships)
+        val result = dao.getAllStarships()
 
         Assert.assertEquals(1, result.size)
-        Assert.assertEquals("Speeder Bike", result[0].name)
+        Assert.assertEquals("X-Wing", result[0].name)
     }
 }
