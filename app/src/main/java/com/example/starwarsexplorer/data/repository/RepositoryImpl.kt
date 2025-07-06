@@ -1,24 +1,24 @@
 package com.example.starwarsexplorer.data.repository
 
-import com.example.starwarsexplorer.data.local.datasource.StarWarsLocalDataSource
+import com.example.starwarsexplorer.data.local.datasource.LocalDataSource
 import com.example.starwarsexplorer.data.local.mapper.LocalMapper
-import com.example.starwarsexplorer.data.remote.datasource.StarWarsRemoteDataSource
+import com.example.starwarsexplorer.data.remote.datasource.RemoteDataSource
 import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
 import com.example.starwarsexplorer.domain.model.Film
 import com.example.starwarsexplorer.domain.model.Starship
 import com.example.starwarsexplorer.domain.model.Vehicle
-import com.example.starwarsexplorer.domain.repository.StarWarsRepository
+import com.example.starwarsexplorer.domain.repository.Repository
 import com.example.starwarsexplorer.domain.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class StarWarsRepositoryImpl @Inject constructor(
-    private val remote: StarWarsRemoteDataSource,
-    private val local: StarWarsLocalDataSource,
+class RepositoryImpl @Inject constructor(
+    private val remote: RemoteDataSource,
+    private val local: LocalDataSource,
     private val remoteMapper: RemoteMapper,
     private val localMapper: LocalMapper
-) : StarWarsRepository {
+) : Repository {
 
     override suspend fun getStarships(): Resource<List<Starship>> = withContext(Dispatchers.IO) {
         try {

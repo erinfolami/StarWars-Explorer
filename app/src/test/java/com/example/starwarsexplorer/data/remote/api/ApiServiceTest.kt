@@ -11,10 +11,10 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class StarWarsApiServiceTest {
+class ApiServiceTest {
 
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var apiService: StarWarsApiService
+    private lateinit var apiService: ApiService
 
     @Before
     fun setup() {
@@ -24,7 +24,7 @@ class StarWarsApiServiceTest {
             .baseUrl(mockWebServer.url("/"))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(StarWarsApiService::class.java)
+            .create(ApiService::class.java)
     }
 
     @After

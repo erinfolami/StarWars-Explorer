@@ -1,7 +1,7 @@
 package com.example.starwarsexplorer.domain.usecase
 
 import com.example.starwarsexplorer.domain.model.Vehicle
-import com.example.starwarsexplorer.domain.repository.StarWarsRepository
+import com.example.starwarsexplorer.domain.repository.Repository
 import com.example.starwarsexplorer.domain.util.Resource
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -17,7 +17,7 @@ import kotlin.test.assertEquals
 class GetVehiclesUseCaseTest {
 
     private lateinit var useCase: GetVehiclesUseCase
-    private val repository: StarWarsRepository = mockk()
+    private val repository: Repository = mockk()
 
     @Before
     fun setUp() {

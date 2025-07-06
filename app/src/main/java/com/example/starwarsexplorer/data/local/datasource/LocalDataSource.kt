@@ -8,7 +8,7 @@ import com.example.starwarsexplorer.data.local.entities.StarshipEntity
 import com.example.starwarsexplorer.data.local.entities.VehicleEntity
 import javax.inject.Inject
 
-class StarWarsLocalDataSource @Inject constructor(
+class LocalDataSource @Inject constructor(
     private val starshipDao: StarshipDao,
     private val filmDao: FilmDao,
     private val vehicleDao: VehicleDao

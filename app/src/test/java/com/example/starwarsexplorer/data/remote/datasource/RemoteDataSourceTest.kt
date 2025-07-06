@@ -1,7 +1,7 @@
 package com.example.starwarsexplorer.data.remote.datasource
 
 
-import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
+import com.example.starwarsexplorer.data.remote.api.ApiService
 import com.example.starwarsexplorer.data.remote.model.FilmDto
 import com.example.starwarsexplorer.data.remote.model.StarshipDto
 import com.example.starwarsexplorer.data.remote.model.VehicleDto
@@ -16,15 +16,15 @@ import org.junit.Test
 import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class StarWarsRemoteDataSourceTest {
+class RemoteDataSourceTest {
 
-    private lateinit var apiService: StarWarsApiService
-    private lateinit var remoteDataSource: StarWarsRemoteDataSource
+    private lateinit var apiService: ApiService
+    private lateinit var remoteDataSource: RemoteDataSource
 
     @Before
     fun setup() {
         apiService = mockk()
-        remoteDataSource = StarWarsRemoteDataSource(apiService)
+        remoteDataSource = RemoteDataSource(apiService)
     }
 
     @Test

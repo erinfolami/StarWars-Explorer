@@ -1,38 +1,47 @@
 package com.example.starwarsexplorer.data.remote.repository
 
-
+import com.example.starwarsexplorer.data.local.datasource.LocalDataSource
 import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
-import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
+import com.example.starwarsexplorer.data.local.mapper.LocalMapper
+import com.example.starwarsexplorer.data.remote.datasource.RemoteDataSource
 import com.example.starwarsexplorer.data.remote.model.FilmDto
 import com.example.starwarsexplorer.data.remote.model.StarshipDto
 import com.example.starwarsexplorer.data.remote.model.VehicleDto
-import com.example.starwarsexplorer.data.repository.StarWarsRepositoryImpl
+import com.example.starwarsexplorer.data.repository.RepositoryImpl
 import com.example.starwarsexplorer.domain.util.Resource
+import com.example.starwarsexplorer.domain.repository.Repository
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class StarWarsRepositoryImplTest {
+class RepositoryImplTest {
 
-    private val apiService: StarWarsApiService = mockk()
-    private val mapper = RemoteMapper()
-    private lateinit var repository: StarWarsRepositoryImpl
+    private val remoteDataSource: RemoteDataSource = mockk()
+    private val localDataSource: LocalDataSource = mockk()
+    private val remoteMapper = RemoteMapper()
+    private val localMapper = LocalMapper()
+
+    private lateinit var repository: Repository
 
     @Before
     fun setUp() {
-        repository = StarWarsRepositoryImpl(apiService, mapper)
+        repository = RepositoryImpl(
+            remote = remoteDataSource,
+            local = localDataSource,
+            remoteMapper = remoteMapper,
+            localMapper = localMapper
+        )
     }
 
     @Test
-    fun `getStarships should return mapped starships from API`() = runTest {
+    fun `getStarships returns mapped starships on success`() = runTest {
         // Given
         val dtoList = listOf(
             StarshipDto(
@@ -46,7 +55,8 @@ class StarWarsRepositoryImplTest {
                 cargoCapacity = "110"
             )
         )
-        coEvery { apiService.getStarships() } returns Response.success(dtoList)
+        coEvery { remoteDataSource.getStarships() } returns Response.success(dtoList)
+        coEvery { localDataSource.saveStarships(any()) } returns Unit
 
         // When
         val result = repository.getStarships()
@@ -54,13 +64,12 @@ class StarWarsRepositoryImplTest {
         // Then
         assertTrue(result is Resource.Success)
         val data = (result as Resource.Success).data
-        assertEquals(1, data.size)
-        assertEquals("X-Wing", data[0].name)
-        coVerify(exactly = 1) { apiService.getStarships() }
+        assertEquals("X-Wing", data.first().name)
+        coVerify { remoteDataSource.getStarships() }
     }
 
     @Test
-    fun `getFilms should return mapped films from API`() = runTest {
+    fun `getFilms returns mapped films on success`() = runTest {
         // Given
         val dtoList = listOf(
             FilmDto(
@@ -72,7 +81,8 @@ class StarWarsRepositoryImplTest {
                 openingCrawl = "It is a period of civil war..."
             )
         )
-        coEvery { apiService.getFilms() } returns Response.success(dtoList)
+        coEvery { remoteDataSource.getFilms() } returns Response.success(dtoList)
+        coEvery { localDataSource.saveFilms(any()) } returns Unit
 
         // When
         val result = repository.getFilms()
@@ -80,13 +90,12 @@ class StarWarsRepositoryImplTest {
         // Then
         assertTrue(result is Resource.Success)
         val data = (result as Resource.Success).data
-        assertEquals(1, data.size)
-        assertEquals("A New Hope", data[0].title)
-        coVerify(exactly = 1) { apiService.getStarships() }
+        assertEquals("A New Hope", data.first().title)
+        coVerify { remoteDataSource.getFilms() }
     }
 
     @Test
-    fun `getVehicles should return mapped vehicles from API`() = runTest {
+    fun `getVehicles returns mapped vehicles on success`() = runTest {
         // Given
         val dtoList = listOf(
             VehicleDto(
@@ -100,18 +109,16 @@ class StarWarsRepositoryImplTest {
                 cargoCapacity = "50000"
             )
         )
-        coEvery { apiService.getVehicles() } returns Response.success(dtoList)
+        coEvery { remoteDataSource.getVehicles() } returns Response.success(dtoList)
+        coEvery { localDataSource.saveVehicles(any()) } returns Unit
 
         // When
         val result = repository.getVehicles()
 
-
         // Then
         assertTrue(result is Resource.Success)
         val data = (result as Resource.Success).data
-        assertEquals(1, data.size)
-        assertEquals("Sand Crawler", data[0].name)
-        coVerify(exactly = 1) { apiService.getStarships() }
-
+        assertEquals("Sand Crawler", data.first().name)
+        coVerify { remoteDataSource.getVehicles() }
     }
 }

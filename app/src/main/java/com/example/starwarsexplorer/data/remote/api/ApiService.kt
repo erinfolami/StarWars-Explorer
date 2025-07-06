@@ -6,7 +6,7 @@ import com.example.starwarsexplorer.data.remote.model.VehicleDto
 import retrofit2.Response
 import retrofit2.http.GET
 
-interface StarWarsApiService {
+interface ApiService {
 
     @GET("starships")
     suspend fun getStarships(): Response<List<StarshipDto>>

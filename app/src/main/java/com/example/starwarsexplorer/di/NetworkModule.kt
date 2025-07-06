@@ -1,6 +1,6 @@
 package com.example.starwarsexplorer.di
 
-import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
+import com.example.starwarsexplorer.data.remote.api.ApiService
 import com.example.starwarsexplorer.utils.NetworkConstants
 import dagger.Module
 import dagger.Provides
@@ -34,6 +34,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideStarWarsApiService(retrofit: Retrofit): StarWarsApiService =
-        retrofit.create(StarWarsApiService::class.java)
+    fun provideStarWarsApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 }
