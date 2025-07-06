@@ -6,6 +6,7 @@ import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
 import com.example.starwarsexplorer.data.remote.model.FilmDto
 import com.example.starwarsexplorer.data.remote.model.StarshipDto
 import com.example.starwarsexplorer.data.remote.model.VehicleDto
+import com.example.starwarsexplorer.data.repository.StarWarsRepositoryImpl
 import com.example.starwarsexplorer.domain.util.Resource
 import io.mockk.coEvery
 import io.mockk.coVerify

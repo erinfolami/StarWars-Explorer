@@ -1,4 +1,4 @@
-package com.example.starwarsexplorer.data.remote.repository
+package com.example.starwarsexplorer.data.repository
 
 import com.example.starwarsexplorer.data.local.datasource.StarWarsLocalDataSource
 import com.example.starwarsexplorer.data.local.mapper.LocalMapper

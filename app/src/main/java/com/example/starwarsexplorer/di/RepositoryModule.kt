@@ -2,7 +2,7 @@ package com.example.starwarsexplorer.di
 
 import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
 import com.example.starwarsexplorer.data.remote.api.StarWarsApiService
-import com.example.starwarsexplorer.data.remote.repository.StarWarsRepositoryImpl
+import com.example.starwarsexplorer.data.repository.StarWarsRepositoryImpl
 import com.example.starwarsexplorer.domain.repository.StarWarsRepository
 import dagger.Module
 import dagger.Provides
