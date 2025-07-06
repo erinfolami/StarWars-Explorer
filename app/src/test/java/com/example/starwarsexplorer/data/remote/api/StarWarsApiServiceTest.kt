@@ -33,7 +33,7 @@ class StarWarsApiServiceTest {
     }
 
     @Test
-    fun testGetStasrships() = runBlocking {
+    fun testGetStarships() = runBlocking {
         // Given
         val mockResponse = MockResponse()
             .setResponseCode(200)
