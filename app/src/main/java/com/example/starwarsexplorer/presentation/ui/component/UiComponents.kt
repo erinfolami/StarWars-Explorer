@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.starwarsexplorer.domain.model.SearchResults
 
 
 @Composable
@@ -43,36 +44,39 @@ fun ClearResultButton(onClearResultClick: () -> Unit) {
 
 @Composable
 fun SearchResultsList(
-    results: List<String>,
-    modifier: Modifier = Modifier
+    results: SearchResults,
 ) {
-    LazyColumn(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        items(results) { result ->
-            Card(
+    LazyColumn {
+        items(results.films) { film ->
+            Text(
+                text = film.title,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .wrapContentHeight(),
-                shape = RoundedCornerShape(8.dp),
-            ) {
-                Text(
-                    text = result,
-                    modifier = Modifier.padding(16.dp)
-                )
-            }
+                    .padding(12.dp)
+            )
+        }
+        items(results.starships) { starship ->
+            Text(
+                text = starship.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp)
+            )
+        }
+        items(results.vehicles) { vehicle ->
+            Text(
+                text = vehicle.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp)
+            )
         }
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
 fun SearchResultsListPreview() {
     val sampleResults = List(5) { "Result item #${it + 1}" }
-    SearchResultsList(results = sampleResults)
+//    SearchResultsList()
 }
