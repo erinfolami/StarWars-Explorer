@@ -12,6 +12,8 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert.assertTrue
+
 
 @RunWith(AndroidJUnit4::class)
 class StarshipDaoTest {
@@ -55,5 +57,28 @@ class StarshipDaoTest {
 
         Assert.assertEquals(1, result.size)
         Assert.assertEquals("X-Wing", result[0].name)
+    }
+
+    @Test
+    fun clearAllStarships_deletesAllStarships() = runBlocking {
+        // Given
+        val starship = StarshipEntity(
+            name = "X-Wing",
+            model = "T-65B",
+            manufacturer = "Incom Corporation",
+            costInCredits = "100000",
+            length = "12.5",
+            crew = "1",
+            passengers = "0",
+            cargoCapacity = "110"
+        )
+        dao.insertStarships(listOf(starship))
+
+        // When
+        dao.clearStarships()
+
+        // Then
+        val allStarships = dao.getAllStarships()
+        assertTrue(allStarships.isEmpty())
     }
 }

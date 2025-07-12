@@ -12,6 +12,8 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert.assertTrue
+
 
 @RunWith(AndroidJUnit4::class)
 class VehicleDaoTest {
@@ -55,5 +57,28 @@ class VehicleDaoTest {
 
         Assert.assertEquals(1, result.size)
         Assert.assertEquals("Speeder Bike", result[0].name)
+    }
+
+    @Test
+    fun clearAllVehicles_deletesAllVehicles() = runBlocking {
+        // Given
+        val vehicle = VehicleEntity(
+            name = "Speeder",
+            model = "74-Z",
+            manufacturer = "Aratech",
+            costInCredits = "3500",
+            length = "3.4",
+            crew = "1",
+            passengers = "1",
+            cargoCapacity = "50"
+        )
+        dao.insertVehicles(listOf(vehicle))
+
+        // When
+        dao.clearVehicles()
+
+        // Then - assert the table is empty
+        val allVehicles = dao.getAllVehicles()
+        assertTrue(allVehicles.isEmpty())
     }
 }
