@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -71,7 +72,13 @@ fun SearchScreen(
             )
 
             Spacer(modifier = Modifier.width(5.dp))
-            SearchButton { onSearchClick() }
+//            SearchButton { onSearchClick() }
+            Button(onClick = {
+                viewModel.search(searchQuery)   // triggers logic
+                onSearchClick()           // triggers navigation
+            }) {
+                Text("Search")
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -83,11 +90,11 @@ fun SearchScreen(
 
             is SearchUiState.Success -> {
                 val results = (uiState as SearchUiState.Success).data
-                Text(
-                    text = results.vehicles.first().name,
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
+//                Text(
+//                    text = results.vehicles.first().name,
+//                    color = MaterialTheme.colorScheme.error,
+//                    modifier = Modifier.align(Alignment.CenterHorizontally)
+//                )
 
 //                SearchResultsList(results, onNavigateToResultsScreen(results))
             }

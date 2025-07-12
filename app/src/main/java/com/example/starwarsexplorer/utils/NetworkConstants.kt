@@ -1,5 +1,5 @@
 package com.example.starwarsexplorer.utils
 
 object NetworkConstants {
-    const val BASE_URL = "https://swapi.dev/api/"
+    const val BASE_URL = "https://swapi.py4e.com/api/"
 }

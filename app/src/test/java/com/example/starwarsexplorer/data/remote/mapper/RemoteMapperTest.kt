@@ -29,9 +29,19 @@ class RemoteMapperTest {
             manufacturer = "Incom Corporation",
             costInCredits = "149999",
             length = "12.5",
+            maxAtmospheringSpeed = "1050",
             crew = "1",
             passengers = "0",
-            cargoCapacity = "110"
+            cargoCapacity = "110",
+            consumables = "1 week",
+            hyperdriveRating = "1.0",
+            mglt = "100",
+            starshipClass = "Starfighter",
+            pilots = emptyList(),
+            films = listOf("https://swapi.dev/api/films/1/"),
+            created = "2023-01-01T00:00:00Z",
+            edited = "2023-01-01T00:00:00Z",
+            url = "https://swapi.dev/api/starships/12/"
         )
 
         val expected = StarshipEntity(
@@ -54,11 +64,19 @@ class RemoteMapperTest {
     fun `filmDtoToEntity maps correctly`() {
         val dto = FilmDto(
             title = "A New Hope",
-            episodeNumber = 4,
+            episodeId = 4,
+            openingCrawl = "It is a period of civil war...",
             director = "George Lucas",
-            producer = "Gary Kurtz, Rick McCallum",
+            producer = "Gary Kurtz",
             releaseDate = "1977-05-25",
-            openingCrawl = "It is a period of civil war..."
+            characters = emptyList(),
+            planets = emptyList(),
+            starships = emptyList(),
+            vehicles = emptyList(),
+            species = emptyList(),
+            created = "2023-01-01T00:00:00Z",
+            edited = "2023-01-01T00:00:00Z",
+            url = "https://swapi.dev/api/films/1/"
         )
 
         val expected = FilmEntity(
@@ -78,14 +96,22 @@ class RemoteMapperTest {
     @Test
     fun `vehicleDtoToEntity maps correctly`() {
         val dto = VehicleDto(
-            name = "Sand Crawler",
-            model = "Digger Crawler",
-            manufacturer = "Corellia Mining Corporation",
-            costInCredits = "150000",
-            length = "36.8",
-            crew = "46",
-            passengers = "30",
-            cargoCapacity = "50000"
+            name = "Speeder",
+            model = "74-Z",
+            manufacturer = "Aratech",
+            costInCredits = "8000",
+            length = "3.4",
+            maxAtmospheringSpeed = "360",
+            crew = "1",
+            passengers = "0",
+            cargoCapacity = "4",
+            consumables = "1 day",
+            vehicleClass = "Speeder",
+            pilots = emptyList(),
+            films = emptyList(),
+            created = "2023-01-01T00:00:00Z",
+            edited = "2023-01-01T00:00:00Z",
+            url = "https://swapi.dev/api/vehicles/42/"
         )
 
         val expected = VehicleEntity(

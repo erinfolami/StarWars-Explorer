@@ -25,7 +25,7 @@ class RepositoryImpl @Inject constructor(
             // Fetch from remote
             val response = remote.getStarships()
             if (response.isSuccessful) {
-                val dtoList = response.body() ?: emptyList()
+                val dtoList = response.body()?.results ?: emptyList()
                 // Map remote DTOs to local entities for caching
                 val entityList = dtoList.map { remoteMapper.starshipDtoToEntity(it) }
                 // Save entities locally
@@ -51,7 +51,7 @@ class RepositoryImpl @Inject constructor(
         try {
             val response = remote.getFilms()
             if (response.isSuccessful) {
-                val dtoList = response.body() ?: emptyList()
+                val dtoList = response.body()?.results ?: emptyList()
                 val entityList = dtoList.map { remoteMapper.filmDtoToEntity(it) }
                 local.saveFilms(entityList)
                 val domainList = entityList.map { localMapper.filmEntityToDomain(it) }
@@ -72,7 +72,7 @@ class RepositoryImpl @Inject constructor(
         try {
             val response = remote.getVehicles()
             if (response.isSuccessful) {
-                val dtoList = response.body() ?: emptyList()
+                val dtoList = response.body()?.results ?: emptyList()
                 val entityList = dtoList.map { remoteMapper.vehicleDtoToEntity(it) }
                 local.saveVehicles(entityList)
                 val domainList = entityList.map { localMapper.vehicleEntityToDomain(it) }

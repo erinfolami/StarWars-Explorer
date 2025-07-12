@@ -29,7 +29,7 @@ class RemoteMapper {
     fun filmDtoToEntity(dto: FilmDto): FilmEntity {
         return FilmEntity(
             title = dto.title,
-            episodeId = dto.episodeNumber,
+            episodeId = dto.episodeId,
             director = dto.director,
             producer = dto.producer,
             releaseDate = dto.releaseDate,

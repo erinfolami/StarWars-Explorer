@@ -21,7 +21,7 @@ import com.example.starwarsexplorer.domain.model.SearchResults
 
 @Composable
 fun SearchButton(onSearchClick: () -> Unit) {
-    Button(onClick = { onSearchClick }) {
+    Button(onClick = { onSearchClick() }) {
         Text("Search")
     }
 }

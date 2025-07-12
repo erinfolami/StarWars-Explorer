@@ -2,6 +2,8 @@ package com.example.starwarsexplorer.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
+
+
 data class VehicleDto(
     val name: String,
     val model: String,
@@ -9,8 +11,18 @@ data class VehicleDto(
     @SerializedName("cost_in_credits")
     val costInCredits: String,
     val length: String,
+    @SerializedName("max_atmosphering_speed")
+    val maxAtmospheringSpeed: String,
     val crew: String,
     val passengers: String,
     @SerializedName("cargo_capacity")
-    val cargoCapacity: String
+    val cargoCapacity: String,
+    val consumables: String,
+    @SerializedName("vehicle_class")
+    val vehicleClass: String,
+    val pilots: List<String>,
+    val films: List<String>,
+    val created: String,
+    val edited: String,
+    val url: String
 )
