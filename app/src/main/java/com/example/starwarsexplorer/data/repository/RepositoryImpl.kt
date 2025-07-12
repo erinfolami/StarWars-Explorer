@@ -88,4 +88,9 @@ class RepositoryImpl @Inject constructor(
             else Resource.Error("Exception: ${e.message}")
         }
     }
+
+    override suspend fun clearAllLocalData() = withContext(Dispatchers.IO) {
+        local.clearAllLocalData()
+    }
+
 }

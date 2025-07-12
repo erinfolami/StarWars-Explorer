@@ -14,6 +14,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 class LocalDataSourceTest {
@@ -102,5 +103,26 @@ class LocalDataSourceTest {
 
         Assert.assertEquals(1, result.size)
         Assert.assertEquals("Sand Crawler", result[0].name)
+    }
+
+    @Test
+    fun clearAllLocalData_clearsAllTables() = runBlocking {
+        // Given - insert dummy data
+        val starship = StarshipEntity(name = "X-Wing", model = "T-65B", manufacturer = "Incom", costInCredits = "100000", length = "12.5", crew = "1", passengers = "0", cargoCapacity = "110")
+        localDataSource.saveStarships(listOf(starship))
+
+        val film = FilmEntity(title = "A New Hope", episodeId = 4, director = "George Lucas", producer = "Gary Kurtz", openingCrawl = "", releaseDate = "1977-05-25")
+        localDataSource.saveFilms(listOf(film))
+
+        val vehicle = VehicleEntity(name = "Speeder", model = "74-Z", manufacturer = "Aratech", costInCredits = "3500", length = "3.4", crew = "1", passengers = "1", cargoCapacity = "50")
+        localDataSource.saveVehicles(listOf(vehicle))
+
+        // When
+        localDataSource.clearAllLocalData()
+
+        // Then
+        assertTrue(localDataSource.getStarships().isEmpty())
+        assertTrue(localDataSource.getFilms().isEmpty())
+        assertTrue(localDataSource.getVehicles().isEmpty())
     }
 }

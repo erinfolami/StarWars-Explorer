@@ -9,4 +9,5 @@ interface Repository {
     suspend fun getStarships(): Resource<List<Starship>>
     suspend fun getFilms(): Resource<List<Film>>
     suspend fun getVehicles(): Resource<List<Vehicle>>
+    suspend fun clearAllLocalData()
 }

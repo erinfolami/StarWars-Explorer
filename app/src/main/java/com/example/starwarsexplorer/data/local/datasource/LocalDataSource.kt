@@ -27,4 +27,10 @@ class LocalDataSource @Inject constructor(
     suspend fun getVehicles(): List<VehicleEntity> = vehicleDao.getAllVehicles()
     suspend fun saveVehicles(vehicles: List<VehicleEntity>) = vehicleDao.insertVehicles(vehicles)
 
+    suspend fun clearAllLocalData() {
+        starshipDao.clearStarships()
+        filmDao.clearFilms()
+        vehicleDao.clearVehicles()
+    }
+
 }

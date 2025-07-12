@@ -224,6 +224,18 @@ class RepositoryImplTest {
         coVerify(exactly = 1) { remoteDataSource.getVehicles() }
         coVerify(exactly = 1) { localDataSource.saveVehicles(listOf(entity)) }
     }
+
+    @Test
+    fun `clearAllLocalData calls localDataSource clearAllData`() = runTest {
+        // Given
+        coEvery { localDataSource.clearAllLocalData() } just Runs
+
+        // When
+        repository.clearAllLocalData()
+
+        // Then
+        coVerify(exactly = 1) { localDataSource.clearAllLocalData() }
+    }
 }
 
 
