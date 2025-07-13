@@ -1,5 +1,7 @@
 package com.example.starwarsexplorer.presentation.ui.search
 
+import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +19,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,17 +32,21 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.starwarsexplorer.domain.model.SearchResults
+import com.example.starwarsexplorer.presentation.shared.SharedViewModel
 import com.example.starwarsexplorer.presentation.ui.component.SearchButton
 import com.example.starwarsexplorer.presentation.ui.component.SearchResultsList
 import com.example.starwarsexplorer.presentation.ui.component.ViewLastResultButton
 
 @Composable
 fun SearchScreen(
-    viewModel: SearchViewModel = hiltViewModel(),
-    onSearchClick: () -> Unit,
+    sharedViewModel: SharedViewModel,
     onViewLastResults: () -> Unit,
-    onNavigateToResultsScreen: (String) -> Unit
+    onNavigateToResultsScreen: (SearchResults) -> Unit,
 ) {
+
+    val viewModel: SearchViewModel = hiltViewModel()
 
     val uiState by viewModel.uiState.collectAsState()
 
@@ -72,10 +79,9 @@ fun SearchScreen(
             )
 
             Spacer(modifier = Modifier.width(5.dp))
-//            SearchButton { onSearchClick() }
+
             Button(onClick = {
-                viewModel.search(searchQuery)   // triggers logic
-                onSearchClick()           // triggers navigation
+                viewModel.search(searchQuery)
             }) {
                 Text("Search")
             }
@@ -89,14 +95,13 @@ fun SearchScreen(
             }
 
             is SearchUiState.Success -> {
-                val results = (uiState as SearchUiState.Success).data
-//                Text(
-//                    text = results.vehicles.first().name,
-//                    color = MaterialTheme.colorScheme.error,
-//                    modifier = Modifier.align(Alignment.CenterHorizontally)
-//                )
 
-//                SearchResultsList(results, onNavigateToResultsScreen(results))
+                val results = (uiState as SearchUiState.Success).data
+
+                LaunchedEffect(Unit) {
+                    sharedViewModel.setSearchResults(results)
+                    onNavigateToResultsScreen(results)
+                }
             }
 
             is SearchUiState.Error -> {
@@ -123,9 +128,9 @@ fun SearchScreen(
 @Preview(showBackground = true)
 @Composable
 fun SearchScreenPreview() {
-    SearchScreen(
-        onSearchClick = { /* Preview: do nothing or show a toast */ },
-        onViewLastResults = { /* Preview: do nothing */ },
-        onNavigateToResultsScreen = { /* Preview: do nothing */ }
-    )
+//    SearchScreen(
+//        sharedViewModel = {},
+//        onViewLastResults = { /* Preview: do nothing */ },
+//        onNavigateToResultsScreen = { /* Preview: do nothing */ }
+//    )
 }
