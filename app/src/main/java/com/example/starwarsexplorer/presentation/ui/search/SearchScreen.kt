@@ -35,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -48,7 +49,7 @@ import com.example.starwarsexplorer.presentation.ui.component.SearchResultsList
 
 @Composable
 fun SearchScreen(
-    sharedViewModel: SharedViewModel,
+    sharedViewModel: SharedViewModel = hiltViewModel(),
     onNavigateToResultsScreen: (SearchResults) -> Unit,
 ) {
 
@@ -81,20 +82,25 @@ fun SearchScreen(
                     focusManager.clearFocus()
                     viewModel.search(searchQuery)
                 },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
             )
 
             SearchButton(onClick = {
                 focusManager.clearFocus()
                 viewModel.search(searchQuery)
-            })
+            }, modifier = Modifier)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         when (uiState) {
             is SearchUiState.Loading -> {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .testTag("LoadingIndicator")
+                )
             }
 
             is SearchUiState.Success -> {
@@ -111,14 +117,16 @@ fun SearchScreen(
                 Text(
                     text = (uiState as SearchUiState.Error).message,
                     color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
                 )
             }
 
             SearchUiState.Empty -> {
                 Text(
                     text = "Please enter a search query.",
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
                 )
             }
         }

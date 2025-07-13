@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.starwarsexplorer.domain.model.SearchResults
@@ -40,7 +41,7 @@ fun SearchInputField(
             cursorColor = MaterialTheme.colorScheme.primary
         ),
         modifier = modifier
-            .height(56.dp),
+            .height(56.dp).testTag("SearchInputField"),
         placeholder = { Text("Search...") },
         shape = RoundedCornerShape(12.dp),
         singleLine = true,
@@ -57,10 +58,10 @@ fun SearchInputField(
 
 
 @Composable
-fun SearchButton(onClick: () -> Unit) {
+fun SearchButton(onClick: () -> Unit, modifier: Modifier) {
     Button(
         onClick = { onClick() },
-        modifier = Modifier.height(56.dp),
+        modifier = Modifier.height(56.dp).testTag("SearchButton"),
         shape = MaterialTheme.shapes.medium,
         colors = androidx.compose.material.ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,
