@@ -1,6 +1,7 @@
 package com.example.starwarsexplorer.presentation.ui.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
@@ -9,24 +10,67 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.starwarsexplorer.domain.model.SearchResults
 
 
 @Composable
-fun SearchButton(onSearchClick: () -> Unit) {
-    Button(onClick = { onSearchClick() }) {
-        Text("Search")
-    }
+fun SearchInputField(
+    searchQuery: String,
+    onQueryChange: (String) -> Unit,
+    onSearch: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    OutlinedTextField(
+        value = searchQuery,
+        onValueChange = onQueryChange,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = MaterialTheme.colorScheme.primary,
+            unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+            cursorColor = MaterialTheme.colorScheme.primary
+        ),
+        modifier = modifier
+            .height(56.dp),
+        placeholder = { Text("Search...") },
+        shape = RoundedCornerShape(12.dp),
+        singleLine = true,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Search
+        ),
+        keyboardActions = KeyboardActions(
+            onSearch = {
+                onSearch()
+            }
+        )
+    )
 }
 
 
 @Composable
-fun ViewLastResultButton(onViewLatResultClick: () -> Unit) {
-    Button(onClick = onViewLatResultClick) {
-        Text("View Last Results")
+fun SearchButton(onClick: () -> Unit) {
+    Button(
+        onClick = { onClick() },
+        modifier = Modifier.height(56.dp),
+        shape = MaterialTheme.shapes.medium,
+        colors = androidx.compose.material.ButtonDefaults.buttonColors(
+            backgroundColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        )
+    ) {
+        Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
     }
 }
+
 
 @Composable
 fun ClearResultButton(onClearResultClick: () -> Unit) {
@@ -34,7 +78,6 @@ fun ClearResultButton(onClearResultClick: () -> Unit) {
         Text("Clear Results")
     }
 }
-
 
 @Composable
 fun SearchResultsList(

@@ -43,8 +43,8 @@ import androidx.navigation.NavController
 import com.example.starwarsexplorer.domain.model.SearchResults
 import com.example.starwarsexplorer.presentation.shared.SharedViewModel
 import com.example.starwarsexplorer.presentation.ui.component.SearchButton
+import com.example.starwarsexplorer.presentation.ui.component.SearchInputField
 import com.example.starwarsexplorer.presentation.ui.component.SearchResultsList
-import com.example.starwarsexplorer.presentation.ui.component.ViewLastResultButton
 
 @Composable
 fun SearchScreen(
@@ -72,45 +72,22 @@ fun SearchScreen(
                 .padding(16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            androidx.compose.material3.OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-                    cursorColor = MaterialTheme.colorScheme.primary
-                ),
-                modifier = Modifier
-                    .weight(1f)
-                    .height(56.dp),
-                placeholder = { Text("Search...") },
-                shape = RoundedCornerShape(12.dp),
-                singleLine = true,
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Search
-                ),
-                keyboardActions = KeyboardActions(
-                    onSearch = {
-                        focusManager.clearFocus()
-                        viewModel.search(searchQuery)
-                    }
-                )
-            )
 
-            Button(
-                onClick = {
+
+            SearchInputField(
+                searchQuery = searchQuery,
+                onQueryChange = { searchQuery = it },
+                onSearch = {
                     focusManager.clearFocus()
                     viewModel.search(searchQuery)
                 },
-                modifier = Modifier.height(56.dp),
-                shape = MaterialTheme.shapes.medium,
-                colors = androidx.compose.material.ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary
-                )
-            ) {
-                Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
-            }
+                modifier = Modifier.weight(1f)
+            )
+
+            SearchButton(onClick = {
+                focusManager.clearFocus()
+                viewModel.search(searchQuery)
+            })
         }
 
         Spacer(modifier = Modifier.height(16.dp))
