@@ -26,14 +26,7 @@ fun ResultsScreen(sharedViewModel: SharedViewModel, navController: NavController
 
         val searchResults = sharedViewModel.searchResults.collectAsState()
 
-
-//            Spacer(modifier = Modifier.height(8.dp))
-
             SearchResultsList(searchResults.value)
-
-
-//        Text(searchResults.value?.films.toString())
-
 
     }
 }

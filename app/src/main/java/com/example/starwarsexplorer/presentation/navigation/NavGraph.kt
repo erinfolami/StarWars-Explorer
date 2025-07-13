@@ -32,7 +32,6 @@ fun NavGraph(
             val sharedViewModel: SharedViewModel = hiltViewModel(parentEntry)
             SearchScreen(
                 sharedViewModel = sharedViewModel,
-                onViewLastResults = { navController.navigate(Screen.Results.route) },
                 onNavigateToResultsScreen = { navController.navigate(Screen.Results.route) },
             )
         }

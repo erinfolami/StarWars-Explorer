@@ -7,17 +7,24 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -42,7 +49,6 @@ import com.example.starwarsexplorer.presentation.ui.component.ViewLastResultButt
 @Composable
 fun SearchScreen(
     sharedViewModel: SharedViewModel,
-    onViewLastResults: () -> Unit,
     onNavigateToResultsScreen: (SearchResults) -> Unit,
 ) {
 
@@ -58,32 +64,52 @@ fun SearchScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center
     ) {
 
-        Row {
-            TextField(
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            androidx.compose.material3.OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                label = { Text("Enter search term") },
-                modifier = Modifier.wrapContentWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    cursorColor = MaterialTheme.colorScheme.primary
+                ),
+                modifier = Modifier
+                    .weight(1f)
+                    .height(56.dp),
+                placeholder = { Text("Search...") },
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Search
                 ),
                 keyboardActions = KeyboardActions(
                     onSearch = {
                         focusManager.clearFocus()
-                        viewModel.search(searchQuery.trim())
+                        viewModel.search(searchQuery)
                     }
                 )
             )
 
-            Spacer(modifier = Modifier.width(5.dp))
-
-            Button(onClick = {
-                viewModel.search(searchQuery)
-            }) {
-                Text("Search")
+            Button(
+                onClick = {
+                    focusManager.clearFocus()
+                    viewModel.search(searchQuery)
+                },
+                modifier = Modifier.height(56.dp),
+                shape = MaterialTheme.shapes.medium,
+                colors = androidx.compose.material.ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                )
+            ) {
+                Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
             }
         }
 
@@ -121,7 +147,6 @@ fun SearchScreen(
         }
     }
 
-    ViewLastResultButton { onViewLastResults() }
 }
 
 
