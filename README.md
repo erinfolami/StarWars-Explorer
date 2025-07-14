@@ -60,11 +60,11 @@ domain/<br>
 presentation/<br>
 ├── ui/<br>
 ├── components/<br>
-├── screens
+├── screens/<br>
 	├── ViewModel
 
 di/<br>
-├── NetworkModule.kt/<br>
+├── NetworkModule.kt<br>
 ├── DatabaseModule.kt
 
 ### Prerequisites
