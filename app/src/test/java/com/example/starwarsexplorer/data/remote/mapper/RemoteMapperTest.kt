@@ -3,7 +3,6 @@ package com.example.starwarsexplorer.data.remote.mapper
 import com.example.starwarsexplorer.data.local.entities.FilmEntity
 import com.example.starwarsexplorer.data.local.entities.StarshipEntity
 import com.example.starwarsexplorer.data.local.entities.VehicleEntity
-import com.example.starwarsexplorer.data.remote.mapper.RemoteMapper
 import com.example.starwarsexplorer.data.remote.model.FilmDto
 import com.example.starwarsexplorer.data.remote.model.StarshipDto
 import com.example.starwarsexplorer.data.remote.model.VehicleDto
@@ -83,7 +82,7 @@ class RemoteMapperTest {
             title = "A New Hope",
             episodeId = 4,
             director = "George Lucas",
-            producer = "Gary Kurtz, Rick McCallum",
+            producer = "Gary Kurtz",
             releaseDate = "1977-05-25",
             openingCrawl = "It is a period of civil war..."
         )
@@ -115,18 +114,19 @@ class RemoteMapperTest {
         )
 
         val expected = VehicleEntity(
-            name = "Sand Crawler",
-            model = "Digger Crawler",
-            manufacturer = "Corellia Mining Corporation",
-            costInCredits = "150000",
-            length = "36.8",
-            crew = "46",
-            passengers = "30",
-            cargoCapacity = "50000"
+            name = "Speeder",
+            model = "74-Z",
+            manufacturer = "Aratech",
+            costInCredits = "8000",
+            length = "3.4",
+            crew = "1",
+            passengers = "0",
+            cargoCapacity = "4"
         )
 
         val actual = mapper.vehicleDtoToEntity(dto)
 
         assertEquals(expected, actual)
     }
+
 }
