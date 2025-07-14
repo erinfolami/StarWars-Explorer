@@ -4,7 +4,7 @@
 StarWars-Explorer is a modern Android application built using Jetpack Compose. It serves as a client for the Star Wars API (SWAPI), allowing users to explore data from the Star Wars universe. The app fetches and displays all available results based on the user's search queries, providing a smooth and responsive UI experience.
 
 
-### 🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 
 * 🛠️ Technologies Used
@@ -22,7 +22,7 @@ StarWars-Explorer is a modern Android application built using Jetpack Compose. I
 
 
 
-### Screenshots
+## Screenshots
 
 <table style="padding:10px">
 	<tr>
@@ -68,8 +68,9 @@ di/
 ├── NetworkModule.kt/
 ```
 
+## 🚀 Getting Started
 
-### Prerequisites
+## Prerequisites
 
 - Android Studio Giraffe or later
 - Kotlin 1.9+
