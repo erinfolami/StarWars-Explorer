@@ -50,21 +50,21 @@ The app follows a clean MVVM architecture.
 
 ```
 data/<br>
-├── model/<br>
-├── repository/<br>
-├── local/<br>
-├── remote/<br>
+├── model/
+├── repository/
+├── local/
+├── remote/
 
 domain/<br>
-├── usecase/<br>
+├── usecase/
 
-presentation/<br>
-├── ui/<br>
-├── components/<br>
-├── screens/<br>
-├── ViewModel
+presentation/
+├── ui/
+├── components/
+├── screens/
+	├── ViewModel
 
-di/<br>
+di/
 ├── NetworkModule.kt/
 ```
 
