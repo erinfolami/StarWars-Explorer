@@ -59,8 +59,8 @@ domain/<br>
 
 presentation/<br>
 ├── ui/<br>
-│ ├── screens/<br>
-│ ├── components/<br>
+├── screens/<br>
+├── components/<br>
 ├── viewmodel/<br>
 
 di/<br>
