@@ -64,8 +64,8 @@ presentation/<br>
 	├── ViewModel
 
 di/<br>
-├── NetworkModule.kt
-├── DtabaseModule.kt
+├── NetworkModule.kt/<br>
+├── DatabaseModule.kt
 
 ### Prerequisites
 
