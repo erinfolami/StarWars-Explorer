@@ -7,8 +7,6 @@ StarWars-Explorer is a modern Android application built using Jetpack Compose. I
 ## 🛠️ Technologies Used
 
 
-* 🛠️ Technologies Used
-
 | Layer         | Libraries                                              |
 |---------------|--------------------------------------------------------|
 | UI            | Jetpack Compose, Material3, Accompanist               |
@@ -65,7 +63,7 @@ presentation/
 ├── ViewModel
 
 di/
-├── NetworkModule.kt/
+├── NetworkModule.kt
 ```
 
 ## 🚀 Getting Started
