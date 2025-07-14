@@ -20,12 +20,13 @@ StarWars-Explorer is a modern Android application built using Jetpack Compose. I
 * Mock webserver
 
 * 🛠️ Technologies Used
-| Layer | Libraries |
-|-------|-----------|
-| UI | Jetpack Compose, Material3, Accompanist |
-| DI | Hilt |
-| DB | Room |
-| Network | Retrofit, OkHttp, Moshi or Gson |
-| Async | Kotlin Coroutines, Flow |
-| Navigation | Jetpack Navigation-Compose |
-| Testing | JUnit, MockK, Turbine, Compose UI Test |
+
+| Layer         | Libraries                                              |
+|---------------|--------------------------------------------------------|
+| UI            | Jetpack Compose, Material3, Accompanist               |
+| DI            | Hilt                                                  |
+| Database      | Room                                                  |
+| Network       | Retrofit, OkHttp, Moshi / Gson                        |
+| Async         | Kotlin Coroutines, Flow                               |
+| Navigation    | Jetpack Navigation-Compose                            |
+| Testing       | JUnit, MockK, Turbine, Compose UI Test                |
