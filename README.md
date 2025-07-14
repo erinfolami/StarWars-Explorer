@@ -66,7 +66,6 @@ presentation/
 di/
 ├── AppModule.kt
 
-
 ### Prerequisites
 
 - Android Studio Giraffe or later
