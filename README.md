@@ -48,6 +48,7 @@ StarWars-Explorer is a modern Android application built using Jetpack Compose. I
 
 The app follows a clean MVVM architecture.
 
+```
 data/<br>
 ├── model/<br>
 ├── repository/<br>
@@ -61,11 +62,12 @@ presentation/<br>
 ├── ui/<br>
 ├── components/<br>
 ├── screens/<br>
-	├── ViewModel
+├── ViewModel
 
 di/<br>
-├── NetworkModule.kt<br>
-├── DatabaseModule.kt
+├── NetworkModule.kt/
+```
+
 
 ### Prerequisites
 
