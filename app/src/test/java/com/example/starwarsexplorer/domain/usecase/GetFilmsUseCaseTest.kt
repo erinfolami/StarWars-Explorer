@@ -17,11 +17,13 @@ import kotlin.test.assertEquals
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetFilmsUseCaseTest {
 
+    private lateinit var repository: Repository
     private lateinit var useCase: GetFilmsUseCase
-    private val repository: Repository = mockk()
+
 
     @Before
     fun setUp() {
+        repository = mockk()
         useCase = GetFilmsUseCase(repository)
     }
 

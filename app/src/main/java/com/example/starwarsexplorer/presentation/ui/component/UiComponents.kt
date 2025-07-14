@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -78,8 +79,16 @@ fun SearchButton(onClick: () -> Unit, modifier: Modifier) {
 
 @Composable
 fun ClearResultButton(onClearResultClick: () -> Unit) {
-    Button(onClick = { onClearResultClick() }) {
-        Text(stringResource(id = R.string.clear_results))
+    Button(
+        onClick = { onClearResultClick() },
+        modifier = Modifier.height(56.dp).testTag(TestTags.SEARCH_BUTTON),
+        shape = MaterialTheme.shapes.large,
+        colors = androidx.compose.material.ButtonDefaults.buttonColors(
+            backgroundColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        )
+    ) {
+        Icon(imageVector = Icons.Default.Clear, contentDescription = stringResource(id = R.string.clear_results))
     }
 }
 
