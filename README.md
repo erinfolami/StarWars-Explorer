@@ -86,7 +86,7 @@ cd StarWars-Explorer
 ```
 
 ### 🔐 Secrets & API Keys
-// No secrets/ API Keys included in the project
+No secrets/ API Keys included in the project
 
 ### 🧪 Testing
 - **Unit tests:**  
