@@ -59,12 +59,13 @@ domain/<br>
 
 presentation/<br>
 ├── ui/<br>
-├── screens/<br>
 ├── components/<br>
-├── viewmodel/<br>
+├── screens
+	├── ViewModel
 
 di/<br>
-├── AppModule.kt
+├── NetworkModule.kt
+├── DtabaseModule.kt
 
 ### Prerequisites
 
