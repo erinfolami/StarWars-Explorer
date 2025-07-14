@@ -38,7 +38,7 @@ StarWars-Explorer is a modern Android application built using Jetpack Compose. I
   	</tr>
 	<tr>
     	<td align="center">
-			<img src="https://github.com/user-attachments/assets/a3ed0cf4-9e48-449b-9e66-4b0bd1150ec1" alt="Trending Screen" width="200"/>
+			<img src="https://github.com/user-attachments/assets/c3515335-ac2c-4462-bd5f-4585b5aa3042" alt="Trending Screen" width="200"/>
     	</td>
 		<td align="center">
 			<img src="https://github.com/user-attachments/assets/ef1db02a-b4de-43c2-89bd-199f75023187" alt="Upcoming Screen" width="200"/>
