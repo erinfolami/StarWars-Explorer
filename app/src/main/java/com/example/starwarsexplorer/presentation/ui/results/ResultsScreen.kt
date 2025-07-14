@@ -13,8 +13,7 @@ import androidx.navigation.NavController
 import com.example.starwarsexplorer.presentation.shared.SharedViewModel
 import com.example.starwarsexplorer.presentation.ui.component.SearchResultsList
 
-//@Composable
-//fun ResultsScreen(sharedViewModel: SharedViewModel, navController: NavController) {
+
 @Composable
 fun ResultsScreen(sharedViewModel: SharedViewModel, navController: NavController) {
 

@@ -1,8 +1,7 @@
 package com.example.starwarsexplorer.utils
 
 object TestTags {
-    const val SearchInputField = "SearchInputField"
-    const val SearchButton = "SearchButton"
-    const val LoadingIndicator = "LoadingIndicator"
-    const val ErrorText = "ErrorText"
+    const val SEARCH_INPUT_FIELD = "SearchInputField"
+    const val SEARCH_BUTTON = "SearchButton"
+    const val LOADING_INDICATOR = "LoadingIndicator"
 }

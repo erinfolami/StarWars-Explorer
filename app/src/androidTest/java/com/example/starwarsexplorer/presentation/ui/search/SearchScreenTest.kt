@@ -20,8 +20,8 @@ class SearchScreenTest {
             SearchScreen(onNavigateToResultsScreen = {})
         }
 
-        composeTestRule.onNodeWithTag(TestTags.SearchInputField).assertIsDisplayed()
-        composeTestRule.onNodeWithTag(TestTags.SearchButton).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(TestTags.SEARCH_INPUT_FIELD).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(TestTags.SEARCH_BUTTON).assertIsDisplayed()
     }
 
     @Test
@@ -30,7 +30,7 @@ class SearchScreenTest {
             SearchScreen(onNavigateToResultsScreen = {})
         }
 
-        val inputNode = composeTestRule.onNodeWithTag(TestTags.SearchInputField)
+        val inputNode = composeTestRule.onNodeWithTag(TestTags.SEARCH_INPUT_FIELD)
         inputNode.performTextInput("Starship")
         inputNode.assertTextEquals("Starship")
     }

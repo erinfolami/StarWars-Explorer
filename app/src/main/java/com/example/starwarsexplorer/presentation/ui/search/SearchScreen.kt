@@ -1,7 +1,5 @@
 package com.example.starwarsexplorer.presentation.ui.search
 
-import android.util.Log
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,21 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Icon
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -36,16 +22,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
+import com.example.starwarsexplorer.R
 import com.example.starwarsexplorer.domain.model.SearchResults
 import com.example.starwarsexplorer.presentation.shared.SharedViewModel
 import com.example.starwarsexplorer.presentation.ui.component.SearchButton
 import com.example.starwarsexplorer.presentation.ui.component.SearchInputField
-import com.example.starwarsexplorer.presentation.ui.component.SearchResultsList
+import com.example.starwarsexplorer.utils.TestTags
 
 @Composable
 fun SearchScreen(
@@ -99,7 +85,7 @@ fun SearchScreen(
                 CircularProgressIndicator(
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
-                        .testTag("LoadingIndicator")
+                        .testTag(TestTags.LOADING_INDICATOR)
                 )
             }
 
@@ -124,7 +110,7 @@ fun SearchScreen(
 
             SearchUiState.Empty -> {
                 Text(
-                    text = "Please enter a search query.",
+                    text = stringResource(id = R.string.enter_search_query),
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                 )

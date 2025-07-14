@@ -20,8 +20,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.starwarsexplorer.R
 import com.example.starwarsexplorer.domain.model.SearchResults
 import com.example.starwarsexplorer.utils.TestTags
 
@@ -42,8 +44,8 @@ fun SearchInputField(
             cursorColor = MaterialTheme.colorScheme.primary
         ),
         modifier = modifier
-            .height(56.dp).testTag(TestTags.SearchInputField),
-        placeholder = { Text("Search...") },
+            .height(56.dp).testTag(TestTags.SEARCH_INPUT_FIELD),
+        placeholder = { Text(stringResource(id = R.string.search_placeholder)) },
         shape = RoundedCornerShape(12.dp),
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -62,14 +64,14 @@ fun SearchInputField(
 fun SearchButton(onClick: () -> Unit, modifier: Modifier) {
     Button(
         onClick = { onClick() },
-        modifier = Modifier.height(56.dp).testTag(TestTags.SearchButton),
+        modifier = Modifier.height(56.dp).testTag(TestTags.SEARCH_BUTTON),
         shape = MaterialTheme.shapes.medium,
         colors = androidx.compose.material.ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary
         )
     ) {
-        Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
+        Icon(imageVector = Icons.Default.Search, contentDescription = stringResource(id = R.string.search_placeholder))
     }
 }
 
@@ -77,7 +79,7 @@ fun SearchButton(onClick: () -> Unit, modifier: Modifier) {
 @Composable
 fun ClearResultButton(onClearResultClick: () -> Unit) {
     Button(onClick = { onClearResultClick() }) {
-        Text("Clear Results")
+        Text(stringResource(id = R.string.clear_results))
     }
 }
 
