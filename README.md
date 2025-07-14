@@ -83,12 +83,18 @@ di/
 ```bash
 git clone https://github.com/erinfolami/StarWars-Explorer.git
 cd StarWars-Explorer
+```
 
-🔐 Secrets & API Keys
-// No secrets/ API Keys included in the App
+### 🔐 Secrets & API Keys
+// No secrets/ API Keys included in the project
 
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+### 🧪 Testing
+Unit tests: ./gradlew testDebugUnitTest
 
-🙋 Contributing
+UI tests: ./gradlew connectedDebugAndroidTest
+
+### 📄 License
+This project is licensed under the [MIT License](./LICENSE). See the LICENSE file for details.
+
+### 🙋 Contributing
 Pull requests are welcome! For major changes, open an issue first to discuss what you’d like to change.
