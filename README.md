@@ -89,9 +89,13 @@ cd StarWars-Explorer
 // No secrets/ API Keys included in the project
 
 ### 🧪 Testing
-Unit tests: ./gradlew testDebugUnitTest
+- **Unit tests:**  
+  ```bash
+  ./gradlew testDebugUnitTest
 
-UI tests: ./gradlew connectedDebugAndroidTest
+- **UI tests:**  
+  ```bash
+./gradlew connectedDebugAndroidTest
 
 ### 📄 License
 This project is licensed under the [MIT License](./LICENSE). See the LICENSE file for details.
