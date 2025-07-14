@@ -95,7 +95,7 @@ cd StarWars-Explorer
 
 - **UI tests:**  
   ```bash
-./gradlew connectedDebugAndroidTest
+  ./gradlew connectedDebugAndroidTest
 
 ### 📄 License
 This project is licensed under the [MIT License](./LICENSE). See the LICENSE file for details.
