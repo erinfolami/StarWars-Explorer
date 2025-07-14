@@ -72,10 +72,16 @@ di/
 
 ### Prerequisites
 
-- Android Studio Giraffe or later
-- Kotlin 1.9+
-- Gradle 8.0+
+- Android Studio Meerkat or later
+- Kotlin 2.0.21+
+- Gradle 8.11.1+
 - Min SDK 24+
 
+
+### Clone the repo
+
+```bash
+git clone https://github.com/erinfolami/StarWars-Explorer.git
+cd StarWars-Explorer
 
 
