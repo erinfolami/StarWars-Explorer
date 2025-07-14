@@ -70,7 +70,7 @@ di/
 
 ## 🚀 Getting Started
 
-## Prerequisites
+### Prerequisites
 
 - Android Studio Giraffe or later
 - Kotlin 1.9+
