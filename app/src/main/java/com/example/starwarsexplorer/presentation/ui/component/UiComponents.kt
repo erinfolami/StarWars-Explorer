@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.starwarsexplorer.domain.model.SearchResults
+import com.example.starwarsexplorer.utils.TestTags
 
 
 @Composable
@@ -41,7 +42,7 @@ fun SearchInputField(
             cursorColor = MaterialTheme.colorScheme.primary
         ),
         modifier = modifier
-            .height(56.dp).testTag("SearchInputField"),
+            .height(56.dp).testTag(TestTags.SearchInputField),
         placeholder = { Text("Search...") },
         shape = RoundedCornerShape(12.dp),
         singleLine = true,
@@ -61,7 +62,7 @@ fun SearchInputField(
 fun SearchButton(onClick: () -> Unit, modifier: Modifier) {
     Button(
         onClick = { onClick() },
-        modifier = Modifier.height(56.dp).testTag("SearchButton"),
+        modifier = Modifier.height(56.dp).testTag(TestTags.SearchButton),
         shape = MaterialTheme.shapes.medium,
         colors = androidx.compose.material.ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,

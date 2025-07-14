@@ -5,6 +5,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.example.starwarsexplorer.MainActivity
+import com.example.starwarsexplorer.utils.TestTags
 import org.junit.Rule
 import org.junit.Test
 
@@ -19,8 +20,8 @@ class SearchScreenTest {
             SearchScreen(onNavigateToResultsScreen = {})
         }
 
-        composeTestRule.onNodeWithTag("SearchInputField").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("SearchButton").assertIsDisplayed()
+        composeTestRule.onNodeWithTag(TestTags.SearchInputField).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(TestTags.SearchButton).assertIsDisplayed()
     }
 
     @Test
@@ -29,7 +30,7 @@ class SearchScreenTest {
             SearchScreen(onNavigateToResultsScreen = {})
         }
 
-        val inputNode = composeTestRule.onNodeWithTag("SearchInputField")
+        val inputNode = composeTestRule.onNodeWithTag(TestTags.SearchInputField)
         inputNode.performTextInput("Starship")
         inputNode.assertTextEquals("Starship")
     }
