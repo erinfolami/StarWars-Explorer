@@ -84,4 +84,11 @@ di/
 git clone https://github.com/erinfolami/StarWars-Explorer.git
 cd StarWars-Explorer
 
+🔐 Secrets & API Keys
+// No secrets/ API Keys included in the App
 
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+🙋 Contributing
+Pull requests are welcome! For major changes, open an issue first to discuss what you’d like to change.
