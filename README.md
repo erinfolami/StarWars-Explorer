@@ -62,7 +62,7 @@ presentation/
 ├── ui/
 ├── components/
 ├── screens/
-	├── ViewModel
+├── ViewModel
 
 di/
 ├── NetworkModule.kt/
